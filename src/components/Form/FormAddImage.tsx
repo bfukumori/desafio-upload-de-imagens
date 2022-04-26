@@ -71,7 +71,7 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
         });
         return;
       }
-      await mutation.mutateAsync({ ...data, url: imageUrl });
+      await mutation.mutateAsync({ ...data, url: imageUrl } as never);
       toast({
         title: 'Imagem cadastrada',
         description: 'Sua imagem foi cadastrada com sucesso.',
