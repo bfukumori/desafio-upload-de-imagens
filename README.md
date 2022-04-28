@@ -13,7 +13,7 @@
     <img alt="Stargazers" src="https://img.shields.io/github/stars/bfukumori/upfi?style=social">
   </a>
 
-  <a href="https://bfukumori.github.io/upfi/">
+  <a href="https://upfi-beta.vercel.app/">
     <img alt="upfi" src="https://img.shields.io/badge/upfi-%237159c1?style=flat&logo=ghost">
     </a>
  
