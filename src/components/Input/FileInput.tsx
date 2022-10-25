@@ -24,7 +24,9 @@ import {
 } from 'react';
 import {
   FieldError,
+  FieldErrorsImpl,
   FieldValues,
+  Merge,
   UseFormSetError,
   UseFormTrigger,
 } from 'react-hook-form';
@@ -33,7 +35,7 @@ import { api } from '../../services/api';
 
 export interface FileInputProps {
   name: string;
-  error?: FieldError;
+  error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
   setImageUrl: Dispatch<SetStateAction<string>>;
   localImageUrl: string;
   setLocalImageUrl: Dispatch<SetStateAction<string>>;
@@ -97,7 +99,7 @@ const FileInputBase: ForwardRefRenderFunction<
           setProgress(Math.round((e.loaded * 100) / e.total));
         },
         cancelToken: source.token,
-      } as AxiosRequestConfig;
+      } as unknown as AxiosRequestConfig;
 
       try {
         const response = await api.post(
@@ -181,7 +183,7 @@ const FileInputBase: ForwardRefRenderFunction<
             ) : (
               <Box pos="relative" h="full">
                 {!!error && (
-                  <Tooltip label={error.message} bg="red.500">
+                  <Tooltip label={error.message as string} bg="red.500">
                     <FormErrorMessage
                       pos="absolute"
                       right={2}
